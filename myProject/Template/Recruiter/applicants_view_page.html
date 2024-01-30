@@ -1,0 +1,94 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applicant Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .resume,
+        .skills,
+        .job-title {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Applicant Details</h1>
+    </header>
+    {% for i in job %}
+    <div class="container">
+        <h2>Applicant Name:{{i.applicant.display_name}}</h2>
+        <div class="job-title">
+            <h3>Job Title: {{i.job.job_title}}</h3>
+        </div>
+
+        <div class="resume">
+            <a href="/{{i.apply_resume}}">Resume:</a>
+            <p>This is the applicant's resume. You can display the resume content here.</p>
+        </div>
+
+        <div class="skills">
+            <h3>Skills: {{i.skills}}</h3>
+            <ul>
+                <li>HTML5</li>
+                <li>CSS3</li>
+                <li>JavaScript</li>
+                <li>React.js</li>
+                <li>Node.js</li>
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+
+    <footer>
+        &copy; 2024 Your Company Name
+    </footer>
+</body>
+
+</html>
+
+
+{% endblock content %}
